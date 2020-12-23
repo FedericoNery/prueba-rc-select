@@ -1,5 +1,5 @@
-import Select from 'rc-select';
 import React from 'react';
+import SelectInterface from './SelectInterface';
 
 const data = [];
 
@@ -15,7 +15,7 @@ function OptionLabelSelect() {
   return (
     <div>
       <h2>Select optionLabelProp</h2>
-      <Select
+      <SelectInterface
         style={{ width: 500 }}
         optionLabelProp="displayLabel"
         mode="multiple"

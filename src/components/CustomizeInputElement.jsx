@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
-import Select, { Option } from 'rc-select';
 import React, { useState } from 'react';
+import OptionInterface from './OptionInterface';
+import SelectInterface from './SelectInterface';
 
 const CustomizeInputElement = (props) => {
     const [estado, setEstado] = useState({
@@ -37,10 +38,7 @@ const CustomizeInputElement = (props) => {
 
     const onAsyncChange = value => {
         window.clearTimeout(timeoutId);
-
-        setEstado({options: []});
-
-        //timeoutId = 
+        setEstado({ options: [] });
         window.setTimeout(() => {
             setEstado({
                 options: [{ value }, { value: `${value}-${value}` }],
@@ -64,7 +62,7 @@ const CustomizeInputElement = (props) => {
                 <button type="button" onClick={() => setEstado({ value: '' })}> reset </button>
             </p>
             <div>
-                <Select
+                <SelectInterface
                     disabled={disabled}
                     style={{ width: 500 }}
                     onChange={onChange}
@@ -79,21 +77,18 @@ const CustomizeInputElement = (props) => {
                     mode="combobox"
                     backfill
                     onFocus={() => console.log('focus')}
-                    onBlur={() => console.log('blur')}
-                >
-                    <Option value="jack">
+                    onBlur={() => console.log('blur')}>
+                    <OptionInterface value="jack">
                         <b style={{ color: 'red' }}>jack</b>
-                    </Option>
-                    <Option value="lucy">lucy</Option>
-                    <Option value="disabled" disabled>
-                        disabled
-        </Option>
-                    <Option value="yiminghe">yiminghe</Option>
-                    <Option value="竹林星光">竹林星光</Option>
-                </Select>
+                    </OptionInterface>
+                    <OptionInterface value="lucy">lucy</OptionInterface>
+                    <OptionInterface value="disabled" disabled>disabled</OptionInterface>
+                    <OptionInterface value="yiminghe">yiminghe</OptionInterface>
+                    <OptionInterface value="竹林星光">竹林星光</OptionInterface>
+                </SelectInterface>
 
                 <h3>Customize Input Element</h3>
-                <Select
+                <SelectInterface
                     mode="combobox"
                     style={{ width: 200 }}
                     getInputElement={() => (
@@ -105,7 +100,7 @@ const CustomizeInputElement = (props) => {
                 />
 
                 <h3>Async Input Element</h3>
-                <Select
+                <SelectInterface
                     mode="combobox"
                     notFoundContent={null}
                     style={{ width: 200 }}

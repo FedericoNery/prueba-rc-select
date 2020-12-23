@@ -1,6 +1,6 @@
-/* eslint-disable no-console */
-import Select, { Option } from 'rc-select';
 import React, { useEffect, useState } from 'react';
+import OptionInterface from './OptionInterface';
+import SelectInterface from './SelectInterface';
 
 const LoadingSelect = (props) => {
     const [estado, setState] = useState({
@@ -15,7 +15,7 @@ const LoadingSelect = (props) => {
 
     const onChange = (value, options) => {
         console.log('onChange', value, options);
-        setState({ value });
+        setState({ value, children: estado.children, loading: false });
     };
 
     const onSelect = (...args) => {
@@ -26,9 +26,9 @@ const LoadingSelect = (props) => {
         const children = [];
         for (let i = 10; i < 36; i += 1) {
             children.push(
-                <Option key={i.toString(36) + i} disabled={i === 10} title={`中文${i}`}>
+                <OptionInterface key={i.toString(36) + i} disabled={i === 10} title={`中文${i}`}>
                     中文{i}
-                </Option>,
+                </OptionInterface>,
             );
         }
         setState({ loading: false, children });
@@ -41,7 +41,7 @@ const LoadingSelect = (props) => {
             <h2>loading load data</h2>
 
             <div style={{ width: 300 }}>
-                <Select
+                <SelectInterface
                     value={value}
                     style={{ width: 500 }}
                     mode="multiple"
@@ -56,7 +56,7 @@ const LoadingSelect = (props) => {
                     tokenSeparators={[' ', ',']}
                 >
                     {children}
-                </Select>
+                </SelectInterface>
             </div>
         </div>
     );
@@ -64,4 +64,3 @@ const LoadingSelect = (props) => {
 }
 
 export default LoadingSelect;
-/* eslint-enable */

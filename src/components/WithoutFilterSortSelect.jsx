@@ -1,5 +1,5 @@
-import Select from 'rc-select';
 import React from 'react';
+import SelectInterface from './SelectInterface';
 
 const incidencesStateResource = [
   { value: 4, label: 'Not Identified' },
@@ -15,15 +15,15 @@ const sorterByLabel = (optionA, optionB) => optionA.label.localeCompare(optionB.
 const WithoutFilterSortSelect = () => (
   <div>
     <h3> with filter sort </h3>
-    <Select
+    <SelectInterface
       showSearch
       style={{ width: 500 }}
       filterSort={sorterByLabel}
       optionFilterProp="label"
       options={incidencesStateResource}
-    ></Select>
+    ></SelectInterface>
     <h3> without filter sort </h3>
-    <Select
+    <SelectInterface
       showSearch
       style={{ width: 500 }}
       optionFilterProp="label"
